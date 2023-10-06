@@ -4,4 +4,4 @@ opencv-contrib-python
 Flask  
 cvzone
 mediapipe
-pip
+pip==21.2.4
