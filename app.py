@@ -11,7 +11,20 @@ detector = HandDetector(maxHands=1)
 offset = 20
 imgSize = 300
 
-cap = cv2.VideoCapture(0)
+def find_camera():
+    # Try to find an available camera
+    for i in range(10):  # You can adjust the range as needed
+        cap = cv2.VideoCapture(i)
+        if cap.isOpened():
+            return cap
+        cap.release()
+    return None
+
+cap = find_camera()  # Try to find an available camera
+
+if cap is None:
+    print("No camera found. Exiting.")
+    exit()
 
 
 def generate_frames():
